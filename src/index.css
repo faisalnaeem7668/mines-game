@@ -1,0 +1,25 @@
+@import "tailwindcss";
+
+
+@layer components {
+  .gradient-btn {
+    background: linear-gradient(90deg, #7717ff, #9347ff);
+    box-shadow: 0 0 12px #7717ff4f, inset 0 -2px #470f97;
+    transition: all 0.2s ease;
+  }
+  
+  .gradient-btn:hover:not(:disabled) {
+    transform: translateY(-1px);
+    box-shadow: 0 0 16px #7717ff6f, inset 0 -2px #470f97;
+  }
+  
+  .gradient-btn:active:not(:disabled) {
+    transform: translateY(1px);
+  }
+  
+  .gradient-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+  }
+}
