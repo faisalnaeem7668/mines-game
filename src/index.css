@@ -22,4 +22,354 @@
     cursor: not-allowed;
     transform: none;
   }
+  .controls-container {
+    background: #13151f;
+    border-radius: 16px;
+    padding: 20px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    width: 100%;
+  }
+  
+  /* Amount Section */
+  .amount-label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 10px;
+  }
+  
+  .amount-label-text {
+    color: #a0a3b0;
+    font-size: 15px;
+    font-weight: 500;
+  }
+  
+  .amount-info-icon {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    border: 1.5px solid #6060a0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    color: #7070a0;
+    font-style: italic;
+    font-weight: 700;
+  }
+  
+  .amount-input-container {
+    display: flex;
+    align-items: center;
+    background: #1a1d26;
+    border-radius: 10px;
+    border: 1px solid #2a2d3a;
+    padding: 0 12px;
+    gap: 8px;
+    margin-bottom: 10px;
+  }
+  
+  .amount-input-container .flag {
+    font-size: 20px;
+    line-height: 1;
+    flex-shrink: 0;
+  }
+  
+  .amount-input-container input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: white;
+    font-size: 18px;
+    font-weight: 600;
+    padding: 14px 0;
+    min-width: 0;
+  }
+  
+  .amount-input-container input::-webkit-inner-spin-button,
+  .amount-input-container input::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  
+  .amount-input-container input[type=number] {
+    -moz-appearance: textfield;
+  }
+  
+  .amount-controls {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-shrink: 0;
+  }
+  
+  .amount-ctrl-btn {
+    background: #2a2d3a;
+    color: #a0a3b0;
+    border: none;
+    border-radius: 7px;
+    padding: 6px 12px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s;
+    white-space: nowrap;
+  }
+  
+  .amount-ctrl-btn:hover:not(:disabled) {
+    background: #363a4e;
+    color: #fff;
+  }
+  
+  .amount-ctrl-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  
+  .arrow-btn-group {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  
+  .arrow-btn {
+    background: #2a2d3a;
+    border: none;
+    color: #a0a3b0;
+    cursor: pointer;
+    padding: 3px 7px;
+    border-radius: 4px;
+    font-size: 10px;
+    line-height: 1;
+    transition: background 0.15s, color 0.15s;
+  }
+  
+  .arrow-btn:hover:not(:disabled) {
+    background: #363a4e;
+    color: white;
+  }
+  
+  .arrow-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  
+  .preset-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+  }
+  
+  .preset-btn {
+    padding: 10px 0;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 14px;
+    border: none;
+    transition: background 0.15s, color 0.15s;
+    cursor: pointer;
+  }
+  
+  .preset-btn-active {
+    background: linear-gradient(135deg, #7717ff, #9333ea);
+    color: white;
+  }
+  
+  .preset-btn-inactive {
+    background: #1e2130;
+    color: #8a8da0;
+  }
+  
+  .preset-btn-inactive:hover:not(:disabled) {
+    background: #2a2d3a;
+    color: white;
+  }
+  
+  .preset-btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+  
+  /* Mines Slider Styles */
+  .mines-slider {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 6px;
+    border-radius: 3px;
+    outline: none;
+    cursor: pointer;
+  }
+  
+  .mines-slider:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+  
+  .mines-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: white;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    border: 2px solid #7717ff;
+    margin-top: -7px;
+  }
+  
+  .mines-slider::-webkit-slider-thumb:hover {
+    transform: scale(1.2);
+    background: #7717ff;
+  }
+  
+  .mines-slider::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: white;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    border: 2px solid #7717ff;
+  }
+  
+  .mines-slider::-moz-range-thumb:hover {
+    transform: scale(1.2);
+    background: #7717ff;
+  }
+  
+  .mines-slider::-webkit-slider-runnable-track {
+    height: 6px;
+    border-radius: 3px;
+  }
+  
+  .mines-slider::-moz-range-track {
+    height: 6px;
+    border-radius: 3px;
+  }
+  
+  /* Slider Container */
+  .slider-container {
+    background: #1a1d26;
+    border-radius: 10px;
+    border: 1px solid #2a2d3a;
+    padding: 10px 16px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  
+  .slider-min-label {
+    color: white;
+    font-size: 15px;
+    font-weight: 600;
+    min-width: 24px;
+    text-align: center;
+    flex-shrink: 0;
+  }
+  
+  .slider-max-label {
+    color: #9b9db0;
+    font-size: 15px;
+    font-weight: 600;
+    min-width: 24px;
+    text-align: center;
+    flex-shrink: 0;
+  }
+  
+  /* Demo Notice */
+  .demo-notice {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: #1a1d26;
+    border-radius: 10px;
+    border: 1px solid #2a2d3a;
+    padding: 12px 16px;
+    color: #d0d2e0;
+    font-size: 14px;
+    font-weight: 500;
+  }
+  
+  .demo-notice .info-icon {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    border: 1.5px solid #7070a0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    color: #7070a0;
+    flex-shrink: 0;
+    font-style: italic;
+    font-weight: 700;
+  }
+  
+  /* Game Status */
+  .game-status-lost {
+    text-align: center;
+    color: #ef4444;
+    font-weight: 600;
+    font-size: 15px;
+  }
+  
+  .game-status-won {
+    text-align: center;
+    color: #22c55e;
+    font-weight: 600;
+    font-size: 15px;
+  }
+  
+  /* Gradient Button */
+  .gradient-btn {
+    background: linear-gradient(90deg, #7717ff, #9347ff);
+    box-shadow: 0 0 12px #7717ff4f, inset 0 -2px #470f97;
+    transition: all 0.2s ease;
+  }
+  
+  .gradient-btn:hover:not(:disabled) {
+    transform: translateY(-1px);
+    box-shadow: 0 0 16px #7717ff6f, inset 0 -2px #470f97;
+  }
+  
+  .gradient-btn:active:not(:disabled) {
+    transform: translateY(1px);
+  }
+  
+  .gradient-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+  }
+
+  /* Min/Max Buttons */
+.minmax-container {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+.minmax-btn {
+  flex: 1;
+  padding: 8px 0;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  background: #1e2130;
+  color: #8a8da0;
+  border: none;
+  transition: all 0.15s;
+}
+
+.minmax-btn:hover {
+  background: #2a2d3a;
+  color: white;
+}
 }

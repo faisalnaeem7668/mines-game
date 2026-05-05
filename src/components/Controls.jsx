@@ -12,6 +12,7 @@ const Controls = ({
   onCashOut,
 }) => {
   const [showDepositModal, setShowDepositModal] = useState(false);
+  const [showMinMax, setShowMinMax] = useState(false);
   const { minesCount, betAmount, balance, gameStarted, gameActive, revealedTiles, gameLost, cashoutAmount } = gameState;
 
   const handleDeposit = (amount) => {
@@ -24,6 +25,17 @@ const Controls = ({
 
   const sliderProgress = ((minesCount - MIN_MINES) / (MAX_MINES - MIN_MINES)) * 100;
 
+  const handleBetChange = (value) => {
+    onBetChange(value);
+    setShowMinMax(true); // Show Min/Max buttons, stays visible
+  };
+
+  // Reset Min/Max visibility when game starts or resets
+  const handleGameStart = () => {
+    onStartGame(minesCount, betAmount);
+    setShowMinMax(false); // Hide Min/Max when new game starts
+  };
+
   return (
     <>
       <DepositModal 
@@ -32,102 +44,150 @@ const Controls = ({
         onDeposit={handleDeposit} 
       />
       
-      <div className="bg-gray-800 rounded-xl p-4 md:p-6 space-y-4 md:space-y-6 w-full">
+      <div style={{ background: '#13151f', borderRadius: 16, padding: '20px 16px', display: 'flex', flexDirection: 'column', gap: 18, width: '100%' }}>
+        {/* Amount Section */}
         <div>
-          <label className="text-gray-400 text-sm md:text-base mb-2 md:mb-3 block">Amount</label>
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+          <div className="amount-label">
+            <label className="amount-label-text">Amount</label>
+            <div className="amount-info-icon">i</div>
+          </div>
+
+          <div className="amount-input-container">
+            <span className="flag">🇮🇳</span>
+            <input
+              type="number"
+              value={betAmount}
+              onChange={(e) => handleBetChange(Number(e.target.value))}
+              disabled={gameStarted}
+              min={0}
+            />
+            <div className="amount-controls">
+              <button className="amount-ctrl-btn" onClick={() => handleBetChange(0)} disabled={gameStarted}>0</button>
+              <button className="amount-ctrl-btn" onClick={() => handleBetChange(Math.floor(betAmount / 2))} disabled={gameStarted}>1/2</button>
+              <button className="amount-ctrl-btn" onClick={() => handleBetChange(betAmount * 2)} disabled={gameStarted}>2×</button>
+              <div className="arrow-btn-group">
+                <button className="arrow-btn" onClick={() => handleBetChange(betAmount + 1)} disabled={gameStarted}>▲</button>
+                <button className="arrow-btn" onClick={() => handleBetChange(Math.max(0, betAmount - 1))} disabled={gameStarted}>▼</button>
+              </div>
+            </div>
+          </div>
+
+          {/* Min/Max Buttons - appear after using up/down arrows and stay visible */}
+          {showMinMax && (
+            <div style={{ display: 'flex', gap: 8, marginTop: 8, marginBottom: 8 }}>
+              <button
+                onClick={() => handleBetChange(0)}
+                className="preset-btn-inactive"
+                style={{ flex: 1, padding: '8px 0', borderRadius: 8, fontWeight: 600, cursor: 'pointer' }}
+              >
+                Min
+              </button>
+              <button
+                onClick={() => handleBetChange(balance)}
+                className="preset-btn-inactive"
+                style={{ flex: 1, padding: '8px 0', borderRadius: 8, fontWeight: 600, cursor: 'pointer' }}
+              >
+                Max
+              </button>
+            </div>
+          )}
+
+          <div className="preset-grid">
             {BET_OPTIONS.map(amount => (
               <button
                 key={amount}
-                onClick={() => onBetChange(amount)}
-                disabled={isBetOptionDisabled(amount)}
-                className={`py-2 md:py-3 rounded-lg font-semibold transition-all text-sm md:text-base ${
-                  betAmount === amount && !gameStarted
-                    ? 'gradient-btn text-white'
-                    : 'bg-gray-700 text-gray-300 hover:bg-gray-600'
-                } ${isBetOptionDisabled(amount) ? 'opacity-50 cursor-not-allowed' : ''}`}
+                onClick={() => handleBetChange(amount)}
+                disabled={isBetOptionDisabled(amount) || gameStarted}
+                className={`preset-btn ${betAmount === amount && !gameStarted ? 'preset-btn-active' : 'preset-btn-inactive'}`}
               >
-                {amount >= 1000 ? `${amount/1000}k` : amount}
+                {amount >= 1000 ? `${amount/1000}.0k` : amount}
               </button>
             ))}
           </div>
         </div>
 
+        {/* Mines Section */}
         <div>
-          <label className="text-gray-400 text-sm md:text-base mb-2 md:mb-3 block">Mines</label>
-          <div className="flex items-center gap-2 md:gap-3">
-            <span className="text-white font-bold text-sm md:text-base">{MIN_MINES}</span>
+          <label className="amount-label-text" style={{ display: 'block', marginBottom: 10 }}>Mines</label>
+          <div className="slider-container">
+            <span className="slider-min-label">{minesCount}</span>
             <input
               type="range"
               min={MIN_MINES}
               max={MAX_MINES}
               value={minesCount}
               onChange={(e) => onMinesChange(parseInt(e.target.value))}
-              className="flex-1 h-1.5 bg-gray-700 rounded-lg appearance-none cursor-pointer range-slider"
+              className="mines-slider"
               disabled={gameStarted}
               style={{
-                background: `linear-gradient(90deg, #7717ff ${sliderProgress}%, #374151 ${sliderProgress}%)`
+                flex: 1,
+                background: `linear-gradient(90deg, #8b22ff ${sliderProgress}%, #2a2d3a ${sliderProgress}%)`
               }}
             />
-            <span className="text-white font-bold text-sm md:text-base">{MAX_MINES}</span>
+            <span className="slider-max-label">{MAX_MINES}</span>
           </div>
-          <div className="text-center text-purple-400 font-bold mt-2 md:mt-3 text-xl md:text-2xl">{minesCount}</div>
         </div>
 
+        {/* Bet Button */}
+        {!gameStarted && (
+          <button
+            onClick={handleGameStart}
+            className="gradient-btn"
+            disabled={betAmount > balance}
+            style={{ width: '100%', padding: '14px 0', borderRadius: 10, color: 'white', fontWeight: 700, fontSize: 18 }}
+          >
+            Bet
+          </button>
+        )}
+
+        {/* Game Action Buttons */}
         {gameStarted && (
-          <div className="space-y-2 md:space-y-3">
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
             <button
               onClick={onRandomPick}
-              className="w-full bg-purple-600 py-2 md:py-3 rounded-lg text-white font-semibold text-sm md:text-base hover:bg-purple-700 transition-all"
               disabled={!gameActive}
+              style={{
+                width: '100%', padding: '12px 0', borderRadius: 10,
+                background: '#6d28d9', color: 'white', fontWeight: 600, fontSize: 15,
+                border: 'none', cursor: gameActive ? 'pointer' : 'not-allowed', opacity: gameActive ? 1 : 0.5,
+              }}
             >
               Pick a Tile Randomly
             </button>
             <button
               onClick={onCashOut}
-              className="w-full gradient-btn py-2 md:py-3 rounded-lg text-white font-bold text-lg md:text-xl"
               disabled={!gameActive}
+              className="gradient-btn"
+              style={{ width: '100%', padding: '14px 0', borderRadius: 10, color: 'white', fontWeight: 700, fontSize: 18 }}
             >
               Cash out ₹{cashoutAmount.toFixed(2)}
             </button>
           </div>
         )}
 
-        {!gameStarted && (
-          <button
-            onClick={() => onStartGame(minesCount, betAmount)}
-            className="w-full gradient-btn py-2 md:py-3 rounded-lg text-white font-bold text-lg md:text-xl"
-            disabled={betAmount > balance}
-          >
-            Bet {betAmount}
-          </button>
-        )}
-
-        <div className="text-center text-gray-500 text-xs md:text-sm">
-          Betting with ₹0 will enter demo mode.
+        {/* Demo Mode Notice */}
+        <div className="demo-notice">
+          <div className="info-icon">i</div>
+          <span>Betting with ₹0 will enter demo mode.</span>
         </div>
 
-        <div className="pt-3 md:pt-4">
-          <div className="text-center mb-2 md:mb-3">
-            <span className="text-2xl md:text-3xl font-bold text-white">₹{balance.toFixed(2)}</span>
-          </div>
+        {/* Balance and Deposit */}
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          <span style={{ fontSize: 28, fontWeight: 700, color: 'white' }}>₹{balance.toFixed(2)}</span>
           <button
             onClick={() => setShowDepositModal(true)}
-            className="w-full gradient-btn py-2 md:py-3 rounded-lg text-white font-bold text-base md:text-lg"
+            className="gradient-btn"
+            style={{ padding: '10px 24px', borderRadius: 10, color: 'white', fontWeight: 700, fontSize: 16 }}
           >
             Deposit
           </button>
-          {gameLost && (
-            <div className="mt-2 md:mt-3 text-center text-red-500 font-semibold text-sm md:text-base">
-              Game Over! You hit a mine!
-            </div>
-          )}
-          {revealedTiles.length === (25 - minesCount) && revealedTiles.length > 0 && !gameLost && (
-            <div className="mt-2 md:mt-3 text-center text-green-500 font-semibold text-sm md:text-base">
-              You won! 🎉
-            </div>
-          )}
         </div>
+
+        {/* Game Status Messages */}
+        {gameLost && <div className="game-status-lost">Game Over! You hit a mine!</div>}
+        {revealedTiles.length === (25 - minesCount) && revealedTiles.length > 0 && !gameLost && (
+          <div className="game-status-won">You won! 🎉</div>
+        )}
       </div>
     </>
   );
