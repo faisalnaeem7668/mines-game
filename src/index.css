@@ -2,9 +2,6 @@
 
 @layer components {
 
-  /* =======================
-     CONTAINER
-  ======================= */
   .controls-container {
     background: #13151f;
     border-radius: 16px;
@@ -18,13 +15,10 @@
     box-sizing: border-box;
   }
 
-  .controls-container > div {
+  .controls-container>div {
     width: 100%;
   }
 
-  /* =======================
-     GRADIENT BUTTON
-  ======================= */
   .gradient-btn {
     width: 100%;
     padding: 14px 0;
@@ -51,9 +45,6 @@
     cursor: not-allowed;
   }
 
-  /* =======================
-     AMOUNT SECTION
-  ======================= */
   .amount-label {
     display: flex;
     align-items: center;
@@ -138,9 +129,6 @@
     cursor: not-allowed;
   }
 
-  /* =======================
-     ARROW BUTTONS
-  ======================= */
   .arrow-btn-group {
     display: flex;
     flex-direction: column;
@@ -166,9 +154,6 @@
     opacity: 0.5;
   }
 
-  /* =======================
-     PRESET BUTTONS
-  ======================= */
   .preset-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -205,9 +190,6 @@
     cursor: not-allowed;
   }
 
-  /* =======================
-     BET SLIDER
-  ======================= */
   .bet-slider-container {
     background: #1a1d26;
     border-radius: 10px;
@@ -247,13 +229,10 @@
     border-radius: 50%;
     background: white;
     border: 2px solid #7717ff;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
     margin-top: -6px;
   }
 
-  /* =======================
-     MINES SLIDER
-  ======================= */
   .slider-container {
     background: #1a1d26;
     border-radius: 10px;
@@ -296,12 +275,14 @@
     flex-shrink: 0;
   }
 
-  .slider-min-label { color: white; }
-  .slider-max-label { color: #9b9db0; }
+  .slider-min-label {
+    color: white;
+  }
 
-  /* =======================
-     NOTICE
-  ======================= */
+  .slider-max-label {
+    color: #9b9db0;
+  }
+
   .demo-notice {
     display: flex;
     align-items: center;
@@ -317,9 +298,6 @@
     font-size: 14px;
   }
 
-  /* =======================
-     BALANCE
-  ======================= */
   .balance-row {
     display: flex;
     justify-content: space-between;
@@ -330,9 +308,6 @@
     font-weight: 700;
   }
 
-  /* =======================
-     STATUS
-  ======================= */
   .game-status-lost {
     text-align: center;
     color: #ef4444;
@@ -343,5 +318,95 @@
     text-align: center;
     color: #22c55e;
     font-weight: 600;
+  }
+
+  .bet-slider::-webkit-slider-thumb,
+  .mines-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 14px;
+    height: 24px;
+    border-radius: 6px;
+    /* rounded corners */
+    background: white;
+    border: 2px solid #7717ff;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    margin-top: -9px;
+    cursor: pointer;
+  }
+
+  .bet-slider::-moz-range-thumb,
+  .mines-slider::-moz-range-thumb {
+    width: 14px;
+    height: 24px;
+    border-radius: 6px;
+    background: white;
+    border: 2px solid #7717ff;
+  }
+
+  .game-buttons-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .random-pick-btn {
+    width: 100%;
+    padding: 12px 0;
+    border-radius: 10px;
+    background: #2a2d3a;
+    color: white;
+    font-weight: 500;
+    font-size: 15px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .random-pick-btn:hover:not(:disabled) {
+    background: #363a4e;
+    color: white;
+  }
+
+  .random-pick-btn:active:not(:disabled) {
+    transform: scale(0.98);
+  }
+
+  .random-pick-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  .cashout-btn {
+    width: 100%;
+    padding: 14px 0;
+    border-radius: 10px;
+    color: #1a1a1a;
+    font-weight: 500;
+    font-size: 18px;
+    background: linear-gradient(135deg, #f5b042 0%, #ffd700 100%);
+    box-shadow: 0 0 12px rgba(245, 176, 66, 0.4);
+    transition: all 0.2s ease;
+    border: none;
+    cursor: pointer;
+  }
+
+  .cashout-btn:hover:not(:disabled) {
+    transform: translateY(-1px);
+    box-shadow: 0 0 16px rgba(245, 176, 66, 0.6);
+  }
+
+  .cashout-btn:active:not(:disabled) {
+    transform: translateY(1px);
+  }
+
+  .cashout-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  .deposit-btn {
+    padding: 10px 24px;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 700;
+    width: auto;
   }
 }

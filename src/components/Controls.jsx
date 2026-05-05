@@ -33,7 +33,7 @@ const Controls = ({
 
   const handleGameStart = () => {
     onStartGame(minesCount, betAmount);
-    setShowMinMax(false); // hide slider
+    setShowMinMax(false);
   };
 
   return (
@@ -46,7 +46,6 @@ const Controls = ({
 
       <div className="controls-container">
 
-        {/* Amount */}
         <div>
           <div className="amount-label">
             <label className="amount-label-text">Amount</label>
@@ -94,11 +93,9 @@ const Controls = ({
             </div>
           </div>
 
-          {/* ✅ Bet Slider (appears only after arrow click) */}
           {showMinMax && (
             <div className="bet-slider-container">
               <span className="bet-slider-label">Min</span>
-
               <input
                 type="range"
                 min={0}
@@ -108,14 +105,9 @@ const Controls = ({
                 onChange={(e) => handleBetChange(Number(e.target.value))}
                 className="bet-slider"
                 style={{
-                  background: `linear-gradient(
-                    90deg,
-                    #8b22ff ${betSliderProgress}%,
-                    #2a2d3a ${betSliderProgress}%
-                  )`
+                  background: `linear-gradient(90deg, #8b22ff ${betSliderProgress}%, #2a2d3a ${betSliderProgress}%)`
                 }}
               />
-
               <span className="bet-slider-label">Max</span>
             </div>
           )}
@@ -134,13 +126,11 @@ const Controls = ({
           </div>
         </div>
 
-        {/* Mines */}
         <div>
-          <label className="amount-label-text" style={{ marginBottom: 10 }}>Mines</label>
+          <label className="amount-label-text" style={{ marginBottom: 10, display: 'block' }}>Mines</label>
 
           <div className="slider-container">
             <span className="slider-min-label">{minesCount}</span>
-
             <input
               type="range"
               min={MIN_MINES}
@@ -150,60 +140,41 @@ const Controls = ({
               disabled={gameStarted}
               className="mines-slider"
               style={{
-                background: `linear-gradient(
-                  90deg,
-                  #8b22ff ${minesSliderProgress}%,
-                  #2a2d3a ${minesSliderProgress}%
-                )`
+                background: `linear-gradient(90deg, #8b22ff ${minesSliderProgress}%, #2a2d3a ${minesSliderProgress}%)`
               }}
             />
-
             <span className="slider-max-label">{MAX_MINES}</span>
           </div>
         </div>
 
-        {/* Bet Button */}
         {!gameStarted && (
-          <button
-            onClick={handleGameStart}
-            className="gradient-btn"
-            disabled={betAmount > balance}
-          >
+          <button onClick={handleGameStart} className="gradient-btn" disabled={betAmount > balance}>
             Bet
           </button>
         )}
 
-        {/* Game Buttons */}
         {gameStarted && (
-          <>
-            <button onClick={onRandomPick} disabled={!gameActive}>
-              Pick Random
+          <div className="game-buttons-container">
+            <button onClick={onRandomPick} disabled={!gameActive} className="random-pick-btn">
+              Pick a Tile Randomly
             </button>
-
-            <button
-              onClick={onCashOut}
-              disabled={!gameActive}
-              className="gradient-btn"
-            >
-              Cash out ₹{cashoutAmount.toFixed(2)}
+            <button onClick={onCashOut} disabled={!gameActive} className="gradient-btn cashout-btn">
+              Cash out 🇮🇳 ₹{cashoutAmount.toFixed(2)}
             </button>
-          </>
+          </div>
         )}
 
-        {/* Notice */}
         <div className="demo-notice">
           <div className="info-icon">i</div>
           <span>Betting with ₹0 will enter demo mode.</span>
         </div>
 
-        {/* Balance */}
         <div className="balance-row">
           <span>₹{balance.toFixed(2)}</span>
-          <button onClick={() => setShowDepositModal(true)} className="gradient-btn">
+          <button onClick={() => setShowDepositModal(true)} className="gradient-btn deposit-btn">
             Deposit
           </button>
         </div>
-
       </div>
     </>
   );
