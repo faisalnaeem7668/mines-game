@@ -14,29 +14,29 @@ const Tile = ({ tile, index, onReveal, gameActive }) => {
       return (
         <div 
           onClick={handleClick}
-          className="w-full h-full bg-gray-800 rounded-lg shadow-lg flex items-center justify-center cursor-pointer transition-all duration-200 "
+          className="w-full h-full bg-[#272a30] rounded-lg shadow-lg flex items-center justify-center cursor-pointer transition-all duration-200"
         >
         </div>
       );
     }
-    
+   
     if (tile.isMine) {
       return (
-        <div className="w-full h-full bg-gray-800 rounded-lg flex items-center justify-center p-2">
-          <img src={mineImg} alt="mine" className="w-14 h-14 object-contain" />
+        <div className="w-full h-full bg-[#272a30] rounded-lg flex items-center justify-center p-2">
+          <img src={mineImg} alt="mine" className="w-10 h-10 md:w-12 md:h-12 object-contain" />
         </div>
       );
     }
     
     return (
       <div className="w-full h-full bg-[#7d40cf] rounded-lg flex items-center justify-center p-2">
-        <img src={diamondImg} alt="diamond" className="w-14 h-14 object-contain" />
+        <img src={diamondImg} alt="diamond" className="w-10 h-10 md:w-12 md:h-12 object-contain" />
       </div>
     );
   };
 
   return (
-    <div className="aspect-square w-full">
+    <div className="w-16 h-16 md:w-20 md:h-20">
       {getTileContent()}
     </div>
   );
