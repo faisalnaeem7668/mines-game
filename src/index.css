@@ -68,7 +68,7 @@
     justify-content: center;
     font-size: 11px;
     color: rgb(119, 23, 255);
-    
+
     font-weight: 600;
   }
 
@@ -110,7 +110,7 @@
 
   .amount-ctrl-btn {
     background: #2a2d3a;
-    color: #a0a3b0;
+    color: #fff;
     border: none;
     border-radius: 7px;
     padding: 6px 12px;
@@ -138,9 +138,9 @@
   .arrow-btn {
     background: #2a2d3a;
     border: none;
-    color: #a0a3b0;
+    color: #fff;
     cursor: pointer;
-    padding: 3px 7px;
+    padding: 0px 7px;
     border-radius: 4px;
     font-size: 10px;
   }
@@ -275,6 +275,7 @@
 
   .slider-min-label {
     color: white;
+    font-weight: 500;
   }
 
   .slider-max-label {
@@ -294,7 +295,7 @@
     font-size: 13px;
     font-weight: 500;
   }
-  
+
   .demo-notice .info-icon {
     width: 12px;
     height: 12px;
@@ -358,6 +359,7 @@
     flex-direction: column;
     gap: 10px;
   }
+
   .random-pick-btn {
     width: 100%;
     padding: 12px 0;
@@ -384,6 +386,7 @@
     opacity: 0.5;
     cursor: not-allowed;
   }
+
   .cashout-btn {
     width: 100%;
     padding: 12px 0;
@@ -419,4 +422,11 @@
     font-weight: 500;
     width: auto;
   }
+
+  .amount-input::-webkit-outer-spin-button,
+  .amount-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
 }

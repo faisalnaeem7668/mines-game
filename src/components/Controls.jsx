@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import { BET_OPTIONS, MIN_MINES, MAX_MINES } from '../constants/gameConfig';
 import DepositModal from './DepositModal';
 
-const Controls = ({ 
+const Controls = ({
   gameState,
-  onMinesChange, 
+  onMinesChange,
   onBetChange,
   onStartGame,
   onDeposit,
@@ -38,10 +38,10 @@ const Controls = ({
 
   return (
     <>
-      <DepositModal 
-        isOpen={showDepositModal} 
-        onClose={() => setShowDepositModal(false)} 
-        onDeposit={handleDeposit} 
+      <DepositModal
+        isOpen={showDepositModal}
+        onClose={() => setShowDepositModal(false)}
+        onDeposit={handleDeposit}
       />
 
       <div className="controls-container">
@@ -56,10 +56,19 @@ const Controls = ({
             <span className="flag">🇮🇳</span>
             <input
               type="number"
-              value={betAmount}
-              onChange={(e) => handleBetChange(Number(e.target.value))}
+              value={betAmount || ''}
+              placeholder="0"
+              onChange={(e) => {
+                const value = e.target.value;
+                if (value === '') {
+                  handleBetChange(0);
+                } else {
+                  handleBetChange(Number(value));
+                }
+              }}
               disabled={gameStarted}
               min={0}
+              className="amount-input"
             />
 
             <div className="amount-controls">
@@ -119,7 +128,7 @@ const Controls = ({
                 disabled={isBetOptionDisabled(amount) || gameStarted}
                 className={`preset-btn ${betAmount === amount && !gameStarted ? 'preset-btn-active' : 'preset-btn-inactive'}`}
               >
-                {amount >= 1000 ? `${amount/1000}.0k` : amount}
+                {amount >= 1000 ? `${amount / 1000}.0k` : amount}
               </button>
             ))}
           </div>
@@ -142,12 +151,16 @@ const Controls = ({
                 background: `linear-gradient(90deg, #8b22ff ${minesSliderProgress}%, #2a2d3a ${minesSliderProgress}%)`
               }}
             />
-            <span className="slider-max-label">{MAX_MINES}</span>
+            <span className="slider-min-label">{MAX_MINES}</span>
           </div>
         </div>
 
         {!gameStarted && (
-          <button onClick={handleGameStart} className="gradient-btn" disabled={betAmount > balance}>
+          <button
+            onClick={handleGameStart}
+            className="gradient-btn"
+            disabled={betAmount <= 0 || betAmount > balance}
+          >
             Bet
           </button>
         )}
@@ -158,7 +171,7 @@ const Controls = ({
               Pick a Tile Randomly
             </button>
             <button onClick={onCashOut} disabled={!gameActive} className="gradient-btn cashout-btn">
-              Cash out 🇮🇳 ₹{cashoutAmount.toFixed(2)}
+              Cash out 🇮🇳 ₹{Math.round(cashoutAmount)}
             </button>
           </div>
         )}

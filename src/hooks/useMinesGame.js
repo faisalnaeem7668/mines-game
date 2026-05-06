@@ -13,7 +13,7 @@ export const useMinesGame = () => {
   const [gameState, setGameState] = useState({
     tiles: createEmptyGrid(),
     minesCount: DEFAULT_MINES,
-    betAmount: 10,
+    betAmount: 0,
     customAmount: '',
     balance: 10000,
     gameActive: false,
