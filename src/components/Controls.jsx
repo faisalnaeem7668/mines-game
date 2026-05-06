@@ -63,7 +63,6 @@ const Controls = ({
             />
 
             <div className="amount-controls">
-              <button onClick={() => handleBetChange(0)} disabled={gameStarted} className="amount-ctrl-btn">0</button>
               <button onClick={() => handleBetChange(Math.floor(betAmount / 2))} disabled={gameStarted} className="amount-ctrl-btn">1/2</button>
               <button onClick={() => handleBetChange(betAmount * 2)} disabled={gameStarted} className="amount-ctrl-btn">2×</button>
 
