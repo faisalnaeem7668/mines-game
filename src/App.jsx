@@ -26,29 +26,28 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#000000] p-4 md:p-6">
-      <div className="max-w-7xl mx-auto">
-        <div className="flex flex-col md:grid md:grid-cols-3 gap-4 md:gap-6">
-          <div className="md:col-span-1 w-full">
-            <Controls
-              gameState={extendedGameState}
-              onMinesChange={updateMinesCount}
-              onBetChange={updateBetAmount}
-              onStartGame={handleStartGame}
-              onRandomPick={randomTilePick}
-              onCashOut={cashOut}
-              onDeposit={depositMoney}
-            />
-          </div>
-          
-          <div className="md:col-span-2 w-full">
-            <GameBoard
-              tiles={gameState.tiles}
-              onRevealTile={revealTile}
-              gameActive={gameState.gameActive}
-            />
-          </div>
+    <div className="page">
+      <div className="game-container">
+        <div className="controls-col">
+          <Controls
+            gameState={extendedGameState}
+            onMinesChange={updateMinesCount}
+            onBetChange={updateBetAmount}
+            onStartGame={handleStartGame}
+            onRandomPick={randomTilePick}
+            onCashOut={cashOut}
+            onDeposit={depositMoney}
+          />
         </div>
+
+        <div className="board-col">
+          <GameBoard
+            tiles={gameState.tiles}
+            onRevealTile={revealTile}
+            gameActive={gameState.gameActive}
+          />
+        </div>
+
       </div>
       
       <WinDialog
