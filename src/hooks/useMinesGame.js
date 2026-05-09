@@ -1,5 +1,8 @@
 import { useState, useCallback } from 'react';
 import { TOTAL_TILES, DEFAULT_MINES } from '../constants/gameConfig';
+import tileClickSound from '../assets/tile_click.mp3';
+import diamondRevealSound from '../assets/diamond_reveal.mp3';
+import mineBlastSound from '../assets/mine_blast.mp3';
 
 const createEmptyGrid = () => {
   const grid = [];
@@ -7,6 +10,11 @@ const createEmptyGrid = () => {
     grid.push({ isRevealed: false, isMine: false });
   }
   return grid;
+};
+
+const playSound = (soundFile) => {
+  const audio = new Audio(soundFile);
+  audio.play().catch(err => console.log('Audio play failed:', err));
 };
 
 export const useMinesGame = () => {
@@ -76,10 +84,14 @@ export const useMinesGame = () => {
       if (!prev.gameActive) return prev;
       if (prev.tiles[index].isRevealed) return prev;
       
+      playSound(tileClickSound);
+      
       const newTiles = [...prev.tiles];
       const tile = { ...newTiles[index] };
       
       if (tile.isMine) {
+        setTimeout(() => playSound(mineBlastSound), 350);
+        
         tile.isRevealed = true;
         newTiles[index] = tile;
         
@@ -97,6 +109,7 @@ export const useMinesGame = () => {
           gameLost: true,
         };
       }
+      setTimeout(() => playSound(diamondRevealSound), 350);
       
       tile.isRevealed = true;
       newTiles[index] = tile;
