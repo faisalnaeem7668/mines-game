@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { BET_OPTIONS, MIN_MINES, MAX_MINES } from '../constants/gameConfig';
 import DepositModal from './DepositModal';
+import flagImg from '../assets/flag.webp';
 
 const Controls = ({
   gameState,
@@ -53,7 +54,7 @@ const Controls = ({
           </div>
 
           <div className="amount-input-container">
-            <span className="flag">🇮🇳</span>
+            <img src={flagImg} alt="flag" className="flag-icon" />
             <input
               type="number"
               value={betAmount || ''}
@@ -171,14 +172,16 @@ const Controls = ({
               Pick a Tile Randomly
             </button>
             <button onClick={onCashOut} disabled={!gameActive} className="gradient-btn cashout-btn">
-              Cash out 🇮🇳 ₹{Math.round(cashoutAmount)}
+               Cash out{' '}
+              <img src={flagImg} alt="flag" className="flag-icon-inline" />
+              {' '}₹{Math.round(cashoutAmount)}
             </button>
           </div>
         )}
 
         <div className="demo-notice">
           <div className="info-icon">i</div>
-          <span>Betting with ₹0 will enter demo mode.</span>
+          <span>Betting with $0 will enter demo mode.</span>
         </div>
 
         <div className="balance-row">

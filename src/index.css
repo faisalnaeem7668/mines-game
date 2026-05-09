@@ -428,5 +428,16 @@
     -webkit-appearance: none;
     margin: 0;
   }
-
+  .flag-icon {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+  }
+  
+  .flag-icon-inline {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+    display: inline-block;
+  }
 }
