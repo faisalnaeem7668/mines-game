@@ -22,7 +22,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 24px;
+    padding: 20px;
     }
 
     .game-container {
@@ -30,14 +30,14 @@
     flex-direction: row;
     align-items: stretch;
     width: 100%;
-    max-width: 1180px;
-    min-height: 560px;
+    max-width: 1200px;
+    min-height: 650px;
     border-radius: 10px;
     overflow: hidden;
     }
 
     .controls-col {
-    width: 330px;
+    width: 360px;
     flex-shrink: 0;
     background: var(--color-medium); 
     border-right: 1px solid var(--color-light);
@@ -185,24 +185,23 @@
     .bet-slider-container {
     background: var(--color-darkGray);
     border-radius: 7px;
-    border: 1px solid #24272f;
     display: flex;
     align-items: center;
     gap: 10px;
     margin-bottom: 10px;
+    overflow: hidden;
+    padding: 0;
     }
 
     .bet-slider-label {
     color: white;
     font-size: 14px;
     font-weight: 500;
-    min-width: 28px;
     text-align: center;
     flex-shrink: 0;
     background: #23272c;
-    border-radius: 7px;
-    padding: 10px 10px;
-    min-width: 50px
+    padding: 10px 12px;
+    min-width: 50px;
 
     }
 
@@ -426,6 +425,7 @@
 
     @media (max-width: 999px) {
     .page {
+      margin:16px;
       padding: 0;
       align-items: flex-start;
     }
@@ -440,7 +440,6 @@
     .controls-col {
       width: 100%;
       border-right: none;
-      border-top: 1px solid var(--color-light);
       border-radius: 0;
     }
 
