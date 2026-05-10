@@ -45,6 +45,7 @@ function App() {
             tiles={gameState.tiles}
             onRevealTile={revealTile}
             gameActive={gameState.gameActive}
+            gameLost={gameState.gameLost}
           />
         </div>
 

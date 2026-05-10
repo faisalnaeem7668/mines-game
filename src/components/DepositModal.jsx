@@ -47,7 +47,7 @@ const DepositModal = ({ isOpen, onClose, onDeposit }) => {
           
           <button
             onClick={handleDepositSubmit}
-            className="w-full gradient-btn py-2 rounded-lg text-white font-base text-base"
+            className="deposit-submit-btn w-full gradient-btn rounded-lg text-white font-base text-base"
           >
             Submit
           </button>
