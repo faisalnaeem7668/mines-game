@@ -186,7 +186,6 @@
     background: var(--color-darkGray);
     border-radius: 7px;
     border: 1px solid #24272f;
-    padding: 10px 14px;
     display: flex;
     align-items: center;
     gap: 10px;
@@ -195,13 +194,17 @@
 
     .bet-slider-label {
     color: white;
-    font-size: 13px;
-    font-weight: 700;
+    font-size: 14px;
+    font-weight: 500;
     min-width: 28px;
     text-align: center;
     flex-shrink: 0;
-    }
+    background: #23272c;
+    border-radius: 7px;
+    padding: 10px 10px;
+    min-width: 50px
 
+    }
 
   .preset-grid {
     display: grid;
