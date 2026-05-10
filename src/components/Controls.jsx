@@ -118,7 +118,7 @@ const Controls = ({
                 onChange={(e) => handleBetChange(Number(e.target.value))}
                 className="bet-slider"
                 style={{
-                  background: `linear-gradient(90deg, #8b22ff ${betSliderProgress}%, #2a2d3a ${betSliderProgress}%)`
+                  background: `linear-gradient(90deg, #8b22ff ${betSliderProgress}%, rgb(50, 55, 56) ${betSliderProgress}%)`
                 }}
               />
               <span className="bet-slider-label">Max</span>
@@ -153,7 +153,7 @@ const Controls = ({
               disabled={gameStarted}
               className="mines-slider"
               style={{
-                background: `linear-gradient(90deg, #8b22ff ${minesSliderProgress}%, #2a2d3a ${minesSliderProgress}%)`
+                background: `linear-gradient(90deg, #8b22ff ${minesSliderProgress}%, rgb(50, 55, 56) ${minesSliderProgress}%)`
               }}
             />
             <span className="slider-min-label">{MAX_MINES}</span>

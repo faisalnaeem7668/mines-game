@@ -5,7 +5,6 @@
     --color-darkGray:  #1a1d22;  
     --color-medium:    #121418;  
     --color-light:     #23272c;  
-    --color-extralight:#23272c;
     --color-brand:     #7717ff;
     --color-lightGray: #b3bec1;
     --color-warning:   #ff9820;
@@ -211,13 +210,13 @@
     }
 
     .preset-btn {
-    padding: 9px 0;
+    padding: 5px 0;
     border-radius: 6px;
-    font-weight: 600;
+    font-weight: 500;
     font-size: 14px;
     border: none;
     cursor: pointer;
-    transition: all 0.12s;
+   
     }
 
     .preset-btn-active {
@@ -227,8 +226,8 @@
     }
 
     .preset-btn-inactive {
-    background: var(--color-light);
-    color: var(--color-lightGray);
+    background: #1a1d22;
+    color:#808080;
     }
 
     .preset-btn-inactive:hover:not(:disabled) {
@@ -243,7 +242,7 @@
     -webkit-appearance: none;
     appearance: none;
     flex: 1;
-    height: 6px;
+    height: 9px;
     border-radius: 3px;
     outline: none;
     cursor: pointer;
@@ -273,7 +272,7 @@
     }
 
     .slider-container {
-    background: var(--color-darkGray);
+    background: var(--color-light);
     border-radius: 7px;
     border: 1px solid #24272f;
     padding: 10px 14px;
@@ -285,7 +284,7 @@
     .slider-min-label {
     color: white;
     font-size: 14px;
-    font-weight: 600;
+    font-weight: 500;
     min-width: 20px;
     text-align: center;
     flex-shrink: 0;
