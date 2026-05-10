@@ -216,13 +216,11 @@
     font-size: 14px;
     border: none;
     cursor: pointer;
-   
-    }
 
+    }
     .preset-btn-active {
-    background-image: linear-gradient(90deg, #7717ff, #9347ff);
-    box-shadow: 0 0 12px #7717ff4f, inset 0 -2px #470f97;
-    color: white;
+    background: #1a1d22;
+    color: #808080;
     }
 
     .preset-btn-inactive {
@@ -231,8 +229,8 @@
     }
 
     .preset-btn-inactive:hover:not(:disabled) {
-    background: #2e323a;
-    color: white;
+    background: #1a1d22;
+    color: #808080;
     }
 
     .preset-btn:disabled { opacity: 0.4; cursor: not-allowed; }
