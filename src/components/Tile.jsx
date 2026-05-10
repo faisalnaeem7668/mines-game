@@ -10,7 +10,7 @@ const Tile = ({ tile, index, onReveal, gameActive, gameLost }) => {
   };
 
   const getTileContent = () => {
-    if (!tile.isRevealed && !gameLost) {
+    if (!tile.isRevealed && !tile.showAfterLoss) {
       return (
         <div 
           onClick={handleClick}
@@ -23,7 +23,7 @@ const Tile = ({ tile, index, onReveal, gameActive, gameLost }) => {
     if (tile.isRevealed && tile.isMine) {
       return (
         <div className="w-full h-full bg-[#272a30] rounded-lg flex items-center justify-center p-2">
-          <img src={mineImg} alt="mine" className="w-10 h-10 md:w-12 md:h-12 object-contain" />
+          <img src={mineImg} alt="mine" className="w-14 h-14 md:w-16 md:h-16 object-contain scale-110" />
         </div>
       );
     }
@@ -31,12 +31,12 @@ const Tile = ({ tile, index, onReveal, gameActive, gameLost }) => {
     if (tile.isRevealed && !tile.isMine) {
       return (
         <div className="w-full h-full bg-[#7d40cf] rounded-lg flex items-center justify-center p-2">
-          <img src={diamondImg} alt="diamond" className="w-10 h-10 md:w-12 md:h-12 object-contain" />
+          <img src={diamondImg} alt="diamond" className="w-14 h-14 md:w-16 md:h-16 object-contain scale-110" />
         </div>
       );
     }
 
-    if (!tile.isRevealed && tile.isMine && gameLost) {
+    if (tile.showAfterLoss && tile.isMine) {
       return (
         <div className="w-full h-full bg-[#272a30] rounded-lg flex items-center justify-center p-2 opacity-35">
           <img src={mineImg} alt="mine" className="w-10 h-10 md:w-12 md:h-12 object-contain opacity-40" />
@@ -44,15 +44,12 @@ const Tile = ({ tile, index, onReveal, gameActive, gameLost }) => {
       );
     }
 
-    if (!tile.isRevealed && !tile.isMine && gameLost) {
-      return (
-        <div className="w-full h-full bg-[#7d40cf] rounded-lg flex items-center justify-center p-2 opacity-35">
-          <img src={diamondImg} alt="diamond" className="w-10 h-10 md:w-12 md:h-12 object-contain opacity-40" />
-        </div>
-      );
-    }
 
-    return null;
+    return (
+      <div className="w-full h-full bg-[#7d40cf] rounded-lg flex items-center justify-center p-2 opacity-35">
+        <img src={diamondImg} alt="diamond" className="w-10 h-10 md:w-12 md:h-12 object-contain opacity-40" />
+      </div>
+    );
   };
 
   return (

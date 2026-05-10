@@ -92,12 +92,17 @@ export const useMinesGame = () => {
       if (tile.isMine) {
         setTimeout(() => playSound(mineBlastSound), 350);
         
-        tile.isRevealed = true;
-        newTiles[index] = tile;
-        
+
+        newTiles[index] = {
+          ...tile,
+          isRevealed: true,
+        };
         for (let i = 0; i < newTiles.length; i++) {
-          if (newTiles[i].isMine && !newTiles[i].isRevealed) {
-            newTiles[i] = { ...newTiles[i], isRevealed: true };
+          if (i !== index) {
+            newTiles[i] = {
+              ...newTiles[i],
+              showAfterLoss: true,
+            };
           }
         }
         
