@@ -131,7 +131,7 @@ const Controls = ({
                 key={amount}
                 onClick={() => handleBetChange(amount)}
                 disabled={isBetOptionDisabled(amount) || gameStarted}
-                className={`preset-btn ${betAmount === amount && !gameStarted ? 'preset-btn-active' : 'preset-btn-inactive'}`}
+                className="preset-btn"
               >
                 {amount >= 1000 ? `${amount / 1000}.0k` : amount}
               </button>
@@ -193,7 +193,7 @@ const Controls = ({
         </div>
 
         <div className="balance-row">
-          <span>₹{balance.toFixed(2)}</span>
+          <span className="balance-amount">₹{balance.toFixed(2)}</span>
           <button onClick={() => setShowDepositModal(true)} className="gradient-btn deposit-btn">
             Deposit
           </button>

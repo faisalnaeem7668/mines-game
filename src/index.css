@@ -76,7 +76,7 @@
     .amount-label-text {
     color: var(--color-lightGray);
     font-size: 14px;
-    font-weight: 500;
+    font-weight: 400;
     }
 
     .amount-info-icon {
@@ -101,12 +101,12 @@
     border: 1px solid #24272f;
     padding: 0 10px 0 12px;
     gap: 8px;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
     }
 
     .flag-icon {
-    width: 22px;
-    height: 22px;
+    width: 20px;
+    height: 20px;
     object-fit: contain;
     flex-shrink: 0;
     }
@@ -126,9 +126,8 @@
     border: none;
     outline: none;
     color: white;
-    font-size: 17px;
-    font-weight: 600;
-    padding: 12px 0;
+    font-size: 15px;
+    font-weight: 400;
     min-width: 0;
     }
 
@@ -152,13 +151,15 @@
     font-size: 13px;
     font-weight: 600;
     cursor: pointer;
-    transition: background 0.12s;
     white-space: nowrap;
-    }
-
-   .amount-ctrl-btn:hover:not(:disabled) {
-    background: #2e323a; }
-    .amount-ctrl-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+  }
+  
+  .amount-ctrl-btn:hover:not(:disabled) {
+    background: var(--color-light);
+    color: white;
+  }
+  
+  .amount-ctrl-btn:disabled { opacity: 0.4; cursor: not-allowed; }
 
     .arrow-btn-group {
     display: flex;
@@ -176,11 +177,15 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: background 0.1s;
     }
-
-    .arrow-btn:hover:not(:disabled) { background: #2e323a; color: white; }
+    
+    .arrow-btn:hover:not(:disabled) { 
+      background: var(--color-light); 
+      color: var(--color-lightGray); 
+    }
+    
     .arrow-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+    
 
     .bet-slider-container {
     background: var(--color-darkGray);
@@ -205,6 +210,10 @@
 
     }
 
+    .balance-amount {
+      font-size: 18px;
+      font-weight: 500;
+    }
   .preset-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -212,30 +221,28 @@
     }
 
     .preset-btn {
-    padding: 5px 0;
-    border-radius: 6px;
-    font-weight: 500;
-    font-size: 14px;
-    border: none;
-    cursor: pointer;
-
+      padding: 5px 0;
+      border-radius: 6px;
+      font-weight: 500;
+      font-size: 14px;
+      border: none;
+      cursor: pointer;
+      background: #1a1d22;
+      color: #808080;
+      opacity: 1 !important;
     }
-    .preset-btn-active {
-    background: #1a1d22;
-    color: #808080;
+    
+    .preset-btn:hover:not(:disabled) {
+      background: #1a1d22;
+      color: #808080;
     }
-
-    .preset-btn-inactive {
-    background: #1a1d22;
-    color:#808080;
+    
+    .preset-btn:disabled { 
+      background: #1a1d22;
+      color: #808080;
+      opacity: 1 !important;
+      cursor: pointer;
     }
-
-    .preset-btn-inactive:hover:not(:disabled) {
-    background: #1a1d22;
-    color: #808080;
-    }
-
-    .preset-btn:disabled { opacity: 0.4; cursor: not-allowed; }
 
     .bet-slider,
     .mines-slider {
@@ -295,8 +302,8 @@
     padding: 13px 0;
     border-radius: 8px;
     color: white;
-    font-weight: 600;
-    font-size: 17px;
+    font-weight: 400;
+    font-size: 14px;
     background-image: linear-gradient(90deg, #7717ff, #9347ff);
     box-shadow: 0 0 12px #7717ff4f, inset 0 -2px #470f97;
     border: none;
@@ -347,9 +354,10 @@
     }
 
     .deposit-btn {
-    padding: 10px 22px !important;
+    padding: 10px 24px !important;
     width: auto !important;
-    font-size: 15px !important;
+    font-size: 14px; 
+    font-weight: 500;
     border-radius: 8px !important;
     }
 
