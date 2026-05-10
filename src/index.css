@@ -288,6 +288,8 @@
     gap: 12px;
     }
 
+    .amount-input::placeholder { color: white; }
+
     .slider-min-label {
     color: white;
     font-size: 14px;

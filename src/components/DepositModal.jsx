@@ -35,15 +35,14 @@ const DepositModal = ({ isOpen, onClose, onDeposit }) => {
 
   return (
     <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50">
-      <div ref={modalRef} className="bg-[#23272c] rounded-2xl p-6 max-w-xs w-full mx-4 shadow-2xl border border-gray-700">
+      <div ref={modalRef} className="bg-[#23272c] rounded-xl p-2 w-56 mx-4 shadow-2xl border-4 border-[#e4eaf019]">
         <div className="space-y-3">
           <input
             type="number"
             value={depositAmount}
             onChange={(e) => setDepositAmount(e.target.value)}
             placeholder="Enter Amount"
-            className="w-full bg-gray-700 text-white px-4 py-2 rounded-lg focus:outline-none text-center text-base [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
-            autoFocus
+            className="w-full bg-[#23272c] text-white px-2 py-2 rounded-lg focus:outline-none text-left text-base border border-[#e4eaf019] [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
           />
           
           <button

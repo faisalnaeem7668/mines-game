@@ -27,7 +27,7 @@ const WinDialog = ({ isOpen, onClose, multiplier, winAmount }) => {
   return (
     <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50">
       <audio ref={audioRef} src={winSound} preload="auto" />
-      <div className="bg-[#23272c] rounded-2xl p-4 w-64 mx-4 shadow-2xl border-4 border-[#2d353e]">
+      <div className="bg-[#23272c] rounded-xl p-4 w-64 mx-4 shadow-2xl border-4 border-[#e4eaf019]">
         <div className="text-center space-y-3">
           <img src={crackerImg} alt="cracker" className="w-64 h- object-contain mx-auto" />
 
@@ -37,9 +37,9 @@ const WinDialog = ({ isOpen, onClose, multiplier, winAmount }) => {
             <img src={starsImg} alt="diamond" className="w-12 h-12 object-contain"  style={{ transform: 'scaleX(-1)' }}  />
           </div>
 
-          <div className="bg-[#2d353e] rounded-xl py-3 px-6 w-full inline-block">
+          <div className="bg-[#e4eaf019] rounded-lg py-1.5 px-6 w-full inline-block">
            
-          <span className="text-xl text-white">
+          <span className="text-lg text-white">
               ₹{Math.round(winAmount)} <img src={flagImg} alt="flag" className="w-5 h-5 object-contain inline-block" />
             </span>
 
