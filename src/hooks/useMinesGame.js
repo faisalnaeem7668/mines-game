@@ -161,6 +161,7 @@ export const useMinesGame = () => {
       
       const newBalance = prev.balance + prev.cashoutAmount;
       const emptyGrid = createEmptyGrid();
+      const multiplier = prev.cashoutAmount > 0 ? prev.currentWinMultiplier : 0;
       
       return {
         ...prev,
@@ -174,7 +175,7 @@ export const useMinesGame = () => {
         currentWinMultiplier: 1,
         showWinDialog: true,
         lastWinAmount: prev.cashoutAmount,
-        lastWinMultiplier: prev.currentWinMultiplier,
+        lastWinMultiplier: multiplier,
       };
     });
   }, []);

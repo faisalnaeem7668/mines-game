@@ -257,9 +257,6 @@
     cursor: pointer;
     }
 
-    .bet-slider:disabled,
-    .mines-slider:disabled { opacity: 0.5; cursor: not-allowed; }
-
     .bet-slider::-webkit-slider-thumb,
     .mines-slider::-webkit-slider-thumb {
     -webkit-appearance: none;
