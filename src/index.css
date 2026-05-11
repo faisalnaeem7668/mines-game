@@ -166,31 +166,28 @@
   
   .amount-ctrl-btn:disabled { opacity: 0.4; cursor: not-allowed; }
 
-    .arrow-btn-group {
+  .arrow-btn-group{
     display: flex;
     flex-direction: column;
-    gap: 1px;
-    }
-
-    .arrow-btn {
-    background: var(--color-light);
-    border: none;
-    color: var(--color-lightGray);
-    cursor: pointer;
-    padding: 2px 7px;
-    border-radius: 4px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    }
-    
-    .arrow-btn:hover:not(:disabled) { 
-      background: var(--color-light); 
-      color: var(--color-lightGray); 
-    }
-    
-    .arrow-btn:disabled { opacity: 0.4; cursor: not-allowed; }
-    
+    border-radius:6px;
+    overflow:hidden;
+   margin: 3px -6px 3px 0;
+  }
+  
+  .arrow-btn{
+   background: var(--color-light);
+    border:none;
+    color:#fff;
+    cursor:pointer;
+    width:44px;
+   
+    display:flex;
+    align-items:center;
+    justify-content:center;
+   }
+  
+  .arrow-btn:disabled{opacity:.4;cursor:not-allowed}
+  
 
     .bet-slider-container {
     background: var(--color-darkGray);
